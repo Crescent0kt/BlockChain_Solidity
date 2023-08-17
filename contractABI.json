@@ -1,0 +1,206 @@
+[
+	{
+		"inputs": [],
+		"name": "a",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "businessID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "encodedData",
+						"type": "string"
+					}
+				],
+				"internalType": "struct Career",
+				"name": "career",
+				"type": "tuple"
+			},
+			{
+				"internalType": "uint256",
+				"name": "tokenId",
+				"type": "uint256"
+			}
+		],
+		"name": "addCareer",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "businessID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "encodedData",
+						"type": "string"
+					}
+				],
+				"internalType": "struct Career",
+				"name": "career",
+				"type": "tuple"
+			}
+		],
+		"name": "addCareerSelf",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "_from",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "_tokenID",
+				"type": "uint256"
+			}
+		],
+		"name": "endContractEvent1",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "_employer",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "_tokenID",
+				"type": "uint256"
+			}
+		],
+		"name": "endContractEvent2",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "_from",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "plusCareer",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "_from",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "requestConfirm",
+		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_ID",
+				"type": "uint256"
+			},
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "businessID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "encodedData",
+						"type": "string"
+					}
+				],
+				"internalType": "struct Career",
+				"name": "userCareer",
+				"type": "tuple"
+			},
+			{
+				"internalType": "address",
+				"name": "boss",
+				"type": "address"
+			}
+		],
+		"name": "setCareerEnd",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_ID",
+				"type": "uint256"
+			}
+		],
+		"name": "getCareer",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "businessID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "encodedData",
+						"type": "string"
+					}
+				],
+				"internalType": "struct Career",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
