@@ -7,8 +7,7 @@ const App: React.FC = () => {
   const [message, setMessage] = useState('');
 
   const handleClick1 = async () => {
-    await user.sendTx(user.contract.methods.a());
-    console.log("aa");
+
   };
 
   const handleClick2 = async () => {
