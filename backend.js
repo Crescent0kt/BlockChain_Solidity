@@ -5,11 +5,13 @@ const { Web3 } = require('web3');
 const secp256k1 = require('secp256k1');
 const ecies = require('eth-ecies');
 const crypto = require('crypto');
+const bodyParser = require('body-parser');
 
 
 const app = express();
 //CORS정책 적용 (모두에게 허용)
 app.use(cors());
+app.use(bodyParser.json());
 
 //mysql 접속 설정
 const conn = {  
@@ -234,6 +236,16 @@ app.get('/membership/search/:privateKey', async(req, res) => {
     res.status(400).send({ message: 'Error : Wrong privateKey', error });
   }
 })
+
+app.post('/contract/add', async (req, res) => {
+	
+	try{
+		let contract = req.body;
+		res.status(201).json({ message: "Contract Received!", contract});
+	}catch{
+		res.status(400).send({ message: 'Error Contract', error });
+	}
+  });
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
