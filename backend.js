@@ -98,6 +98,25 @@ const abi = [
 		"type": "function"
 	},
 	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "_myAddress",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "_didURL",
+				"type": "string"
+			}
+		],
+		"name": "alarmGetDID",
+		"type": "event"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -110,7 +129,7 @@ const abi = [
 				"type": "string"
 			}
 		],
-		"name": "getDID",
+		"name": "storeDID",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -151,7 +170,7 @@ const abi = [
 						"type": "uint256[]"
 					}
 				],
-				"internalType": "struct createDID.did",
+				"internalType": "struct makeDID.did",
 				"name": "",
 				"type": "tuple"
 			}
@@ -160,12 +179,20 @@ const abi = [
 		"type": "function"
 	}
 ];
-const contractAddress = "0x8544642F7f8ca5cd68fAD8a23d2AD52ba9FB5DF3";
+const contractAddress = "0x1114D9032C66465d6dAe6e5D5AC07C956B81323c";
 const didcontract = new web3.eth.Contract(abi, contractAddress);
 
 
+(async() => {
+	const subscription = await web3.eth.subscribe('alarmGetDID');
 
-
+	subscription.on('data', async blockhead => {
+		console.log('New block header: ', blockhead);
+	});
+	subscription.on('error', error =>
+		console.log('Error when subscribing to New block header: ', error),
+	);
+})
 
 
 
@@ -187,27 +214,14 @@ app.post('/membership/create/:name', async (req, res) => {
    
     //블록체인 상에 사용자의 고유 DID를 저장합니다. 
     // 해당 함수의 인자 넣기
-    const functionToCall = didcontract.methods.getDID(didURL, publicKey);
-
-    (async () => {
-      const gasEstimate = await functionToCall.estimateGas();
-      const data = functionToCall.encodeABI();
-
-      const transactionParameters = {
-        to: contractAddress,
-        gas: gasEstimate,
-        data,
-      };
-
-      // 트랜잭션 서명 및 전송
-      web3.eth.accounts.signTransaction(transactionParameters, privateKey).then((signedTransaction) => {
-        web3.eth.sendSignedTransaction(signedTransaction.rawTransaction).then((receipt) => {
-          console.log('Transaction receipt:', receipt);
-        }).catch((error) => {
-          console.error('Transaction error:', error);
-        });
-      });
-    })();
+    didcontract.methods.storeDID(didURL, publicKey).send({ 
+		from: '0xC58a70c7C157DcFa5B71Cc7489dCe336b6eb0cD9', gas: 3000000 })
+	.then((receipt) => {
+		console.log(receipt);
+	})
+	.catch((err) => {
+		console.error(err);
+	});
 
     // DB 상에 사용자를 저장합니다
     const sql = `INSERT INTO user_data (name, DID) VALUES (?, ?)`;
@@ -219,6 +233,8 @@ app.post('/membership/create/:name', async (req, res) => {
   } catch{
     res.status(400).send({ message: 'Error : Create Membership', error});
   }
+
+
 });
 
 app.get('/membership/search/:privateKey', async(req, res) => {
