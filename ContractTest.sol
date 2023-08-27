@@ -36,53 +36,61 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 
 
     struct AgreementSol{
-         // 사업주, 근로자 이름 
-         string employer;
-         string employee;
+        // 사업주, 근로자 이름 
+        string employer;
+        string employee;
 
-         // 근무로로 계약 기간 시작일 
-         uint16 start_year;
-         uint8 start_month;
-         uint8 start_day; 
+        // 근무로로 계약 기간 시작일 
+        uint16 start_year;
+        uint8 start_month;
+        uint8 start_day; 
 
-         // 근로 계약 기간 종료일 
-         uint16 end_year;
-         uint8 end_month;
-         uint8 end_day; 
+        // 근로 계약 기간 종료일 
+        uint16 end_year;
+        uint8 end_month;
+        uint8 end_day; 
 
-         string location; // 근무 장소
-         string job; // 업무의 내용 
+        string location; // 근무 장소
+        string job; // 업무의 내용 
 
         // 소정근로시간  
-         uint16 start_time; 
-         uint16 end_time; 
+        uint16 start_time; 
+        uint16 end_time; 
 
         //휴게시간
         uint16 start_restTime;
         uint16 end_restTime; 
 
-         uint8 work_day; //근무일 주 n회 
-         string holiday; //주휴일 매주 n요일 
-         uint32 payment; // 월급 
-         uint32 bonus; // 상여급 
-         uint32 other_salary; // 기타급여 
-         uint8 pay_month; // 임금지급일 월 기준 
-         string pay_week; // 임금지급일 주 기준 
-         bool account; // 임금 지급 방법 
+        uint8 work_day; //근무일 주 n회 
+        string holiday; //주휴일 매주 n요일
 
-         // 사회보험 적용 여부 
-         bool insurance1; // 고용보험 
-         bool insurance2; // 산재보험 
-         bool insurance3; // 국민연금 
-         bool insurance4; // 건강보험 
+        uint8 salary; // 1 : 월급, 2 : 일급, 3 : 시급 
+        uint32 payment; // 급여 정보 
 
-         // 작성 기준 날짜 
-         uint256 create_time;
+        bool hasBonus; // 상여급을 받는지 유무 
+        uint32 bonus; // 상여급 
+
+        bool hasOther; // 기타급여 받는지 의무 
+        uint32 other_salary; // 기타급여 
+
+        bool payCheck; // 임금지급 기간 1 : 매월 기준, 2 : 매주 기준, 3: 일급이므로 설정 없음 
+        string payday; // 임급지급 날짜 ex) 15 or 월
+
+        bool account; // 임금 지급 방법 
+
+        // 사회보험 적용 여부 
+        bool insurance1; // 고용보험 
+        bool insurance2; // 산재보험 
+        bool insurance3; // 국민연금 
+        bool insurance4; // 건강보험 
+
+        // 작성 기준 날짜 
+        uint256 create_time;
 
 
-         //사업주, 근로자 디지털서명  
-         string employerSign;
-         string employeeSign; 
+        //사업주, 근로자 디지털서명  
+        string employerSign;
+        string employeeSign; 
     }
 
     Counters.Counter private _tokenIDs; // 토큰 ID 카운터를 위한 변수
