@@ -1,0 +1,75 @@
+// 1. 필요한 라이브러리 및 파일 가져오기
+import React from 'react';
+import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { StackNavigatorParamList } from '../../navigation/types';
+
+// 2. 타입 및 인터페이스 정의
+interface TemplateNameScreenProps {
+  navigation: StackNavigationProp<StackNavigatorParamList, 'Template'>; // 'Template'를 해당 스크린의 이름으로 변경해주세요.
+}
+
+// 3. 화면 컴포넌트 작성
+const TemplateNameScreen = ({ navigation }: TemplateNameScreenProps) => {
+  const onNextScreenButtonClick = () => {
+    navigation.navigate('NextScreen'); // 'NextScreen'은 이동하고자 하는 다른 스크린의 이름으로 변경해주세요.
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>안녕하세요, 템플릿 스크린입니다.</Text>
+      <TouchableOpacity onPress={onNextScreenButtonClick} style={styles.button}>
+        <Text>다음 화면으로 이동</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+// 4. 스타일 정의 (옵션)
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 24,
+  },
+  button: {
+    backgroundColor: '#4a90e2',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 8,
+    marginTop: 20,
+  },
+});
+
+export default TemplateNameScreen;
+
+
+
+import { Header } from "@rneui/base";
+
+//Header
+
+      <Header
+        backgroundImageStyle={{}}
+        barStyle="default"
+        centerComponent={{
+          text: "로그인",
+          style: { color: "#fff" }
+        }}
+        centerContainerStyle={{}}
+        containerStyle={{ width: "100%" }}
+        leftComponent={{ icon: "menu", color: "#fff", }}
+        leftContainerStyle={{}}
+        linearGradientProps={{}}
+        placement="center"
+        rightComponent={
+          <View>
+            <TouchableOpacity onPress={() => navigation.navigate('Main')}><Text>권기찬</Text></TouchableOpacity>
+          </View>
+          }
+        rightContainerStyle={{}}
+        statusBarProps={{}}
+      />
