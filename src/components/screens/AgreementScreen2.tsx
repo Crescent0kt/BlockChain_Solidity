@@ -8,6 +8,8 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import CheckBox from "@react-native-community/checkbox";
 import CustomButton from '../common/CustomButton';
 import styled from 'styled-components/native';
+import CustomHeader from '../common/CustomHeader';
+
 
 interface AgreementScreen2Props {
   navigation: StackNavigationProp<StackNavigatorParamList, "Agreement2">;
@@ -161,16 +163,15 @@ const AgreementScreen2: React.FC<AgreementScreen2Props> = ({ navigation, route }
 
   return (
     <MainContainer>
+      <CustomHeader title="표준근로계약서" navigation = {navigation} search ={false} />
+      <Space/>
       <KeyboardAwareScrollView
-        style={{ flex: 1, paddingHorizontal: 20 }}
+        style={{ flex: 1, paddingHorizontal: 20, backgroundColor:"#ffffff" }}
         contentContainerStyle={{ flexGrow: 1 }}
         resetScrollToCoords={{ x: 0, y: 0 }}
         scrollEnabled={true}
       >
-        <TitleContainer>
-          <Title>표준근로계약서</Title>
-        </TitleContainer>
-        <Separator />
+
         <View>
           <BoldText>5. 근무일/휴일 :</BoldText>
           <Row>
@@ -372,7 +373,8 @@ export default AgreementScreen2;
 
 
 const MainContainer = styled.View`
-    flex: 1
+    flex: 1;
+    background-color:#ffffff;
 `;
 
 const TitleContainer = styled.View`
@@ -386,19 +388,6 @@ const Space = styled.View`
     margin-vertical: 6px;
 `
 
-
-const Title = styled.Text`
-    flex:1;
-    font-size: 30px;
-    textAlign: center;
-    font-weight: bold;
-`
-
-const Separator = styled.View`
-    borderBottomWidth: 2px;
-    borderBottomColor: black;
-    margin-bottom:5px;
-`;
 
 const ButtonContainer = styled.View`
   justify-content:center;
@@ -457,15 +446,6 @@ const FourNumInput = styled.TextInput`
     padding-top : 3px;
 `;
 
-const TwoNumInput = styled.TextInput`
-    border-bottom-width: 1px;
-    border-bottom-color: black;
-    font-size: 18px;
-    margin-right: 5px;
-    text-align: right;
-    padding-bottom: 3px;
-    padding-top : 3px;
-`;
 
 const SmallInput = styled.TextInput`
     border-bottom-width: 1px;
@@ -476,18 +456,6 @@ const SmallInput = styled.TextInput`
     padding-bottom: 0px;
     padding-top : 3px;
 
-`;
-
-const WideInput = styled.TextInput`
-
-    border-bottom-width: 1px;
-    border-bottom-color: black;
-    font-size: 18px;
-    margin-right: 5px;
-    text-align: right;
-    padding-bottom: 3px;
-    padding-top : 3px;
-    min-width: 200px;
 `;
 
 const CheckBoxContainer = styled.View`

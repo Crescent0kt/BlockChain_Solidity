@@ -3,12 +3,12 @@ import {
     View,Alert,
 } from 'react-native';
 
-import { parse, isWithinInterval,isPast } from 'date-fns';
+import { parse, isWithinInterval } from 'date-fns';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { StackNavigatorParamList } from '../../navigation/types';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
 import CustomButton from '../common/CustomButton';
+import CustomHeader from '../common/CustomHeader';
 import styled from 'styled-components/native';
 
 
@@ -142,17 +142,13 @@ const AgreementScreen: React.FC<AgreementScreenProps> = ({ navigation }) => {
 
     return (
         <MainContainer>
+            <CustomHeader title="표준근로계약서" navigation = {navigation} />
             <KeyboardAwareScrollView
-               style={{flex:1,paddingHorizontal:20}}
+               style={{flex:1,paddingHorizontal:20, backgroundColor:"#ffffff"}}
                 contentContainerStyle={{ flexGrow: 1 }}
                 resetScrollToCoords={{ x: 0, y: 0 }}
                 scrollEnabled={true}
             >
-                <TitleContainer>
-                    <Title>표준근로계약서</Title>
-                </TitleContainer>
-                <Separator />
-
                 <View>
                     <Row>
                         <CommonInput
@@ -342,7 +338,8 @@ const AgreementScreen: React.FC<AgreementScreenProps> = ({ navigation }) => {
 export default AgreementScreen;
 
 const MainContainer = styled.View`
-    flex: 1
+    flex: 1;
+    background-color: '#FFFFFF';
 `;
 
 const TitleContainer = styled.View`

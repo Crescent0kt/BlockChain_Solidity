@@ -6,9 +6,9 @@ import { RouteProp } from '@react-navigation/native';
 
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import CheckBox from "@react-native-community/checkbox";
-import styles from '../stylesheet/AgreementStyleSheet';
 import CustomButton from '../common/CustomButton';
 import styled from 'styled-components/native';
+import CustomHeader from "../common/CustomHeader";
 
 
 interface AgreementScreen3Props {
@@ -66,17 +66,15 @@ const AgreementScreen3: React.FC<AgreementScreen3Props> = ({ navigation, route }
 
 
   return (
-    <View style={{ flex: 1 }}>
+    <MainContainer>
+      <CustomHeader title="표준근로계약서" navigation = {navigation} search={false} />
+      <Space/>
       <KeyboardAwareScrollView
-        style={{ flex: 1, paddingHorizontal: 20 }}
+        style={{ flex: 1, paddingHorizontal: 20 , backgroundColor:"#ffffff"}}
         contentContainerStyle={{ flexGrow: 1 }}
         resetScrollToCoords={{ x: 0, y: 0 }}
         scrollEnabled={true}
       >
-        <TitleContainer>
-          <Title>표준근로계약서</Title>
-        </TitleContainer>
-        <Separator />
         <View>
           <BoldText>8. 사회보험 적용여부(해당란에체크) :</BoldText>
 
@@ -116,14 +114,14 @@ const AgreementScreen3: React.FC<AgreementScreen3Props> = ({ navigation, route }
           <Text style={{ fontSize: 20,textAlign: 'right'}}>근로자 : {route.params.employee}</Text>
           <ButtonContainer>
             <CustomButton
-              title="다음"
+              title="완료"
               onPress={() => handleSubmit()}
               type="next"
             />
           </ButtonContainer>
         </View>
       </KeyboardAwareScrollView>
-    </View>
+    </MainContainer>
   );
 };
 
@@ -133,7 +131,8 @@ export default AgreementScreen3;
 
 
 const MainContainer = styled.View`
-    flex: 1
+    flex: 1;
+    background-color : #ffffff
 `;
 
 const TitleContainer = styled.View`
@@ -166,25 +165,6 @@ const ButtonContainer = styled.View`
   margin-top:30px;
 `;
 
-const Row = styled.View`
-    flex-direction: row;
-    align-items: center;
-    margin-vertical: 6px;
-    flex : 1;
-
-`;
-const SmallRow = styled.View`
-    flex-direction: row;
-    align-items: center;
-    margin-vertical: 3px;
-    flex : 1;
-
-`;
-
-const CommonText = styled.Text`
-    font-size: 18px;
-    text-align:left;
-`;
 
 const CommonText2 = styled.Text`
     font-size: 15px;
@@ -203,58 +183,6 @@ const SmallText = styled.Text`
 `;
 
 
-const CommonInput = styled.TextInput`
-    border-bottom-width: 1px;
-    border-bottom-color: black;
-    font-size: 18px;
-    margin-right: 5px;
-    text-align: right;
-    padding-bottom: 3px;
-    padding-top : 3px;
-`;
-
-const FourNumInput = styled.TextInput`
-    border-bottom-width: 1px;
-    border-bottom-color: black;
-    font-size: 18px;
-    margin-right: 5px;
-    text-align: right;
-    padding-bottom: 3px;
-    padding-top : 3px;
-`;
-
-const TwoNumInput = styled.TextInput`
-    border-bottom-width: 1px;
-    border-bottom-color: black;
-    font-size: 18px;
-    margin-right: 5px;
-    text-align: right;
-    padding-bottom: 3px;
-    padding-top : 3px;
-`;
-
-const SmallInput = styled.TextInput`
-    border-bottom-width: 1px;
-    border-bottom-color: black;
-    font-size: 14px;
-    margin-right: 5px;
-    text-align: right;
-    padding-bottom: 0px;
-    padding-top : 3px;
-
-`;
-
-const WideInput = styled.TextInput`
-
-    border-bottom-width: 1px;
-    border-bottom-color: black;
-    font-size: 18px;
-    margin-right: 5px;
-    text-align: right;
-    padding-bottom: 3px;
-    padding-top : 3px;
-    min-width: 200px;
-`;
 
 const CheckBoxContainer = styled.View`
     flex-direction: row;

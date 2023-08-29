@@ -4,7 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { StackNavigatorParamList } from '../../navigation/types';
 import { Button, Text } from '@rneui/themed';
-
+import CustomHeader from '../common/CustomHeader';
 // 2. 타입 및 인터페이스 정의
 interface MainScreenProps {
   navigation: StackNavigationProp<StackNavigatorParamList, 'Main'>;
@@ -105,9 +105,9 @@ const MainScreen: FC<MainScreenProps> = ({ navigation }) => {
       end_restTime: 130,
 
       work_day: 5,
-      holiday: '주말',
+      holiday: '일',
 
-      salary: 1,
+      salary: 3,
       payment: 3000000,
 
       hasBonus: true,
@@ -134,7 +134,8 @@ const MainScreen: FC<MainScreenProps> = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+  <View style={styles.container}>
+    
       <Text h3>테스트용 페이지 입니다.{"\n"}</Text>
       <Button
         title="근로계약서 작성"
@@ -252,7 +253,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#ffffff',
   },
 });
 

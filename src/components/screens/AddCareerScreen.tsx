@@ -157,6 +157,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+
   },
   title: {
     fontSize: 24,
@@ -194,4 +195,5 @@ export default AddCareerScreen;
 const MainContainer = styled.View`
   flex:1;
   padding : 16px;
+  background-color:#ffffff;
   `

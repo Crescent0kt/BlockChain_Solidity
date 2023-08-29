@@ -3,7 +3,8 @@ import { FlatList, StyleSheet, View,Dimensions } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { StackNavigatorParamList } from '../../navigation/types';
 import { Button, withTheme, Text } from '@rneui/themed';
-
+import CustomHeader from '../common/CustomHeader';
+import styled from 'styled-components/native';
 
 
 const columnWidth = Dimensions.get('window').width / 4;
@@ -129,22 +130,20 @@ const ShowCareerScreen: FC<ShowCareerScreenProps> = ({ navigation }) => {
   );
 
   return (
-    <View style={styles.container}>
-
-      <Text h1 style={{ textAlign: "center" }}>이력 조회</Text>
-
-      <View style={styles.headerContainer}>
-        <Text style={styles.itemText}>근무지</Text>
-        <Text style={styles.itemText}>근무 기간</Text>
-        <Text style={styles.itemText}>인증</Text>
-        <Text style={styles.itemText}>조회</Text>
-      </View>
+    <MainContainer>
+      <CustomHeader title="이력조회" navigation = {navigation} search = {true} />
+      <HeaderContainer>
+        <ItemText>근무지</ItemText>
+        <ItemText>근무 기간</ItemText>
+        <ItemText>인증</ItemText>
+        <ItemText>조회</ItemText>
+      </HeaderContainer>
       <FlatList
         data={DATA}
         renderItem={renderItem}
         keyExtractor={(item: Data) => item.id}
       />
-    </View >
+    </MainContainer >
   );
 };
 
@@ -159,6 +158,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 10,
     backgroundColor: 'lightblue',
+    borderBottomColor : 'black',
+
   },
   headerText: {
     fontSize: 16,
@@ -181,3 +182,26 @@ const styles = StyleSheet.create({
 });
 
 export default ShowCareerScreen;
+
+
+const MainContainer = styled.View`
+    flex: 1;
+    background-color:#ffffff;
+
+    `;
+
+const HeaderContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-vertical: 10px;
+  background-color: lightblue;
+
+`;
+
+const ItemText = styled.Text`
+  font-size: 16px;
+  text-align: center;
+  width: ${columnWidth}px;
+  font-weight: bold;
+`;
