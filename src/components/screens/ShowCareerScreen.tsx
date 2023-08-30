@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { FlatList, StyleSheet, View,Dimensions } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { StackNavigatorParamList } from '../../navigation/types';
-import { Button, withTheme, Text } from '@rneui/themed';
+import { Button } from '@rneui/themed';
 import CustomHeader from '../common/CustomHeader';
 import styled from 'styled-components/native';
 
@@ -96,10 +96,10 @@ const Item: FC<ItemProps> = ({ id, colA, colB, colC,navigation}) => {
   };
 
   return (
-    <View style={styles.itemContainer}>
-      <Text style={styles.itemText}>{colA}</Text>
-      <Text style={styles.itemText}>{colB}</Text>
-      <Text style={styles.itemText}>{colC}</Text>
+    <ItemContainer>
+      <ItemText>{colA}</ItemText>
+      <ItemText>{colB}</ItemText>
+      <ItemText>{colC}</ItemText>
       <View style={{ width: columnWidth, alignItems: "center" }}>
         <Button
           title={'조회'}
@@ -116,7 +116,7 @@ const Item: FC<ItemProps> = ({ id, colA, colB, colC,navigation}) => {
         />
       </View>
 
-    </View >
+    </ItemContainer >
   );
 };
 
@@ -131,7 +131,7 @@ const ShowCareerScreen: FC<ShowCareerScreenProps> = ({ navigation }) => {
 
   return (
     <MainContainer>
-      <CustomHeader title="이력조회" navigation = {navigation} search = {true} />
+      <CustomHeader title="이력조회" navigation = {navigation} menu={true}/>
       <HeaderContainer>
         <ItemText>근무지</ItemText>
         <ItemText>근무 기간</ItemText>
@@ -146,43 +146,7 @@ const ShowCareerScreen: FC<ShowCareerScreenProps> = ({ navigation }) => {
     </MainContainer >
   );
 };
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  headerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 10,
-    backgroundColor: 'lightblue',
-    borderBottomColor : 'black',
-
-  },
-  headerText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  itemContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-  },
-  itemText: {
-    fontSize: 16,
-    textAlign: 'center',
-    width: columnWidth,
-  },
-});
-
 export default ShowCareerScreen;
-
 
 const MainContainer = styled.View`
     flex: 1;
@@ -195,7 +159,7 @@ const HeaderContainer = styled.View`
   justify-content: space-between;
   align-items: center;
   padding-vertical: 10px;
-  background-color: lightblue;
+  background-color: #D3D3D3;
 
 `;
 
@@ -205,3 +169,13 @@ const ItemText = styled.Text`
   width: ${columnWidth}px;
   font-weight: bold;
 `;
+
+const ItemContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-vertical: 10px;
+  border-bottom-width: 1px;
+  border-bottom-color: #ccc;
+`;
+

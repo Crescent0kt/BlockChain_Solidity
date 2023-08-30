@@ -22,7 +22,7 @@ const LoginScreen: FC<LoginScreenProps> = ({ navigation }) => {
   const onButtonClick2 = () => {
     navigation.reset({
       index: 0,
-      routes: [{ name: 'Main' }],
+      routes: [{ name: 'Test' }],
     });
   };
   

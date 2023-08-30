@@ -9,7 +9,7 @@ const CustomButton = ({ title, onPress, type }) => {
   switch(type) {
     case 'login':
       buttonStyle = {
-        backgroundColor: 'rgba(111, 202, 186, 1)',
+        backgroundColor:  'rgba(90, 154, 230, 1)',
         borderRadius: 5,
       };
       titleStyle = { fontWeight: 'bold', fontSize: 23 };

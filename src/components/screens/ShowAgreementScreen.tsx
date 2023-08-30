@@ -79,7 +79,7 @@ const ShowAgreementScreen: React.FC<ShowAgreementScreenProps> = ({ navigation, r
 
   return (
     <MainContainer>
-      <CustomHeader title="근로계약서 조회" navigation={navigation} search = {false} />
+      <CustomHeader title="근로계약서 조회" navigation={navigation} menu={false} />
 
       <ScrollContainer>
         <Row>
@@ -383,31 +383,10 @@ const MainContainer = styled.View`
     background-color: #FFFFFF;
 `;
 
-const TitleContainer = styled.View`
-    flex-direction: row;
-    align-items: center;
-    margin : 20px;
-    background-color: #FFFFFF;
-`;
-
-
-const Title = styled.Text`
-    flex:1;
-    font-size: 30px;
-    textAlign: center;
-    font-weight: bold;
-`
 const Space = styled.View`
     margin-vertical: 3px;
     background-color: #ffffff;
 `
-
-const Separator = styled.View`
-    borderBottomWidth: 2px;
-    borderBottomColor: black;
-    margin-bottom:5px;
-    background-color: #ffffff;
-`;
 
 
 const ScrollContainer = styled.ScrollView`
@@ -433,7 +412,7 @@ const CommonText = styled.Text`
 `;
 
 const BoldText = styled.Text`
-    font-size: 18px;
+    font-size: 30px;
     text-align:left;
     font-weight: bold;
 `;

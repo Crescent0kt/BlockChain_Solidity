@@ -163,7 +163,7 @@ const AgreementScreen2: React.FC<AgreementScreen2Props> = ({ navigation, route }
 
   return (
     <MainContainer>
-      <CustomHeader title="표준근로계약서" navigation = {navigation} search ={false} />
+      <CustomHeader title="표준근로계약서" navigation = {navigation} menu={false}  />
       <Space/>
       <KeyboardAwareScrollView
         style={{ flex: 1, paddingHorizontal: 20, backgroundColor:"#ffffff" }}
@@ -171,12 +171,13 @@ const AgreementScreen2: React.FC<AgreementScreen2Props> = ({ navigation, route }
         resetScrollToCoords={{ x: 0, y: 0 }}
         scrollEnabled={true}
       >
-
+        <Space />
+        <Space />
         <View>
-          <BoldText>5. 근무일/휴일 :</BoldText>
+          <BigBoldText>5. 근무일/휴일 :</BigBoldText>
           <Row>
             <CommonText> 매주 </CommonText>
-            <FourNumInput
+            <NumInput
               onChangeText={text => {
                 const number = parseInt(text);
                 setWorkDay(isNaN(number) ? 0 : number);
@@ -198,7 +199,8 @@ const AgreementScreen2: React.FC<AgreementScreen2Props> = ({ navigation, route }
 
           </Row>
           <Space />
-          <BoldText>6.급여 :</BoldText>
+          <Space />
+          <BigBoldText>6.급여 :</BigBoldText>
           <Row>
             <CheckBoxContainer>
               {["월급", "일급", "시급"].map((label, index) => (
@@ -343,7 +345,8 @@ const AgreementScreen2: React.FC<AgreementScreen2Props> = ({ navigation, route }
             />
           </CheckBoxContainer>
           <Space />
-          <BoldText>7. 연차유급휴가 :</BoldText>
+          <Space />
+          <BigBoldText>7. 연차유급휴가 :</BigBoldText>
           <Space />
           <SmallText>연차유급휴가는 근로기준법에서 정하는 바에 따라 부여함.</SmallText>
           <Space />
@@ -377,17 +380,9 @@ const MainContainer = styled.View`
     background-color:#ffffff;
 `;
 
-const TitleContainer = styled.View`
-    flex-direction: row;
-    align-items: center;
-    margin : 20px;
-    
-`;
-
 const Space = styled.View`
     margin-vertical: 6px;
 `
-
 
 const ButtonContainer = styled.View`
   justify-content:center;
@@ -414,14 +409,8 @@ const CommonText = styled.Text`
     text-align:left;
 `;
 
-const BoldText = styled.Text`
-    font-size: 18px;
-    text-align:left;
-    font-weight: bold;
-`;
-
 const SmallText = styled.Text`
-    font-size : 14px;
+    font-size : 16px;
     text-align:left;
 `;
 
@@ -434,9 +423,10 @@ const CommonInput = styled.TextInput`
     text-align: right;
     padding-bottom: 3px;
     padding-top : 3px;
+    min-width: 80px;
 `;
 
-const FourNumInput = styled.TextInput`
+const NumInput = styled.TextInput`
     border-bottom-width: 1px;
     border-bottom-color: black;
     font-size: 18px;
@@ -450,9 +440,9 @@ const FourNumInput = styled.TextInput`
 const SmallInput = styled.TextInput`
     border-bottom-width: 1px;
     border-bottom-color: black;
-    font-size: 14px;
+    font-size: 16px;
     margin-right: 5px;
-    text-align: right;
+    text-align: center;
     padding-bottom: 0px;
     padding-top : 3px;
 
@@ -462,4 +452,10 @@ const CheckBoxContainer = styled.View`
     flex-direction: row;
     align-items: center;
 
+`;
+
+const BigBoldText = styled.Text`
+    font-size: 20px;
+    text-align:left;
+    font-weight: bold;
 `;

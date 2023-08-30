@@ -1,6 +1,7 @@
 export type StackNavigatorParamList = {
   Login: undefined;
   Main: undefined;
+  Test: undefined;
   AddCareer: undefined;
   Agreement: undefined;
   ShowAgreement: {

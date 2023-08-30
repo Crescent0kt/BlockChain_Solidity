@@ -67,51 +67,59 @@ const AgreementScreen3: React.FC<AgreementScreen3Props> = ({ navigation, route }
 
   return (
     <MainContainer>
-      <CustomHeader title="표준근로계약서" navigation = {navigation} search={false} />
-      <Space/>
+      <CustomHeader title="표준근로계약서" navigation={navigation} menu={false} />
+      <Space />
       <KeyboardAwareScrollView
-        style={{ flex: 1, paddingHorizontal: 20 , backgroundColor:"#ffffff"}}
+        style={{ flex: 1, paddingHorizontal: 20, backgroundColor: "#ffffff" }}
         contentContainerStyle={{ flexGrow: 1 }}
         resetScrollToCoords={{ x: 0, y: 0 }}
         scrollEnabled={true}
       >
         <View>
-          <BoldText>8. 사회보험 적용여부(해당란에체크) :</BoldText>
+          <Space />
+          <Space />
+          <BigBoldText>8. 사회보험 적용여부(해당란에체크) :</BigBoldText>
 
           <CheckBoxContainer>
             <CheckBox value={insurance1} onValueChange={(newValue) => setInsurance1(newValue)} />
-            <CommonText2>고용보험</CommonText2>
+            <SmallText>고용보험</SmallText>
 
             <CheckBox value={insurance2} onValueChange={(newValue) => setInsurance2(newValue)} />
-            <CommonText2>산재보험</CommonText2>
+            <SmallText>산재보험</SmallText>
 
             <CheckBox value={insurance3} onValueChange={(newValue) => setInsurance3(newValue)} />
-            <CommonText2>국민연금</CommonText2>
+            <SmallText>국민연금</SmallText>
 
             <CheckBox value={insurance4} onValueChange={(newValue) => setInsurance4(newValue)} />
-            <CommonText2>건강보험</CommonText2>
+            <SmallText>건강보험</SmallText>
           </CheckBoxContainer>
           <Space />
-          <BoldText>9. 근로계약서 교부</BoldText>
+          <Space />
+          <Space />
+          <BigBoldText>9. 근로계약서 교부</BigBoldText>
           <SmallText>사업주는 근로계약을 체결함과 동시에 본 계약서를 사본하여{"\n"}
             근로자의 교부요구와 관계없이 근로자에게 교부함{"\n"}
             (근로기준법 제17조 이행)</SmallText>
 
           <Space />
-          <BoldText>10. 근로계약, 취업규칙 등의 성실한 이행의무</BoldText>
+          <Space />
+          <Space />
+          <BigBoldText>10. 근로계약, 취업규칙 등의 성실한 이행의무</BigBoldText>
           <SmallText>사업주와 근로자는 각자가 근로계약, 취업규칙
             {"\n"}단체협약을 지키고 성실하게 이행하여야 함</SmallText>
 
-
           <Space />
-          <BoldText>11. 기타</BoldText>
+          <Space />
+          <Space />
+          <BigBoldText>11. 기타</BigBoldText>
           <SmallText>  - 이 계약에 정함이 없는 사항은 근로기준법령에 의함</SmallText>
 
           <Space />
           <Space />
-          <Text style={{ fontSize: 20, textAlign: 'right', marginTop: 50, marginBottom: 150 }}>{create_time}</Text>
-          <Text style={{ fontSize: 20,textAlign: 'right'}}>대표자 : {route.params.employer}</Text>
-          <Text style={{ fontSize: 20,textAlign: 'right'}}>근로자 : {route.params.employee}</Text>
+
+          <Text style={{ fontSize: 20, textAlign: 'right', marginTop: 50, marginBottom: 20 }}>{create_time}</Text>
+          <Text style={{ fontSize: 20, textAlign: 'right' }}>대표자 : {route.params.employer}</Text>
+          <Text style={{ fontSize: 20, textAlign: 'right', marginBottom: 100 }}>근로자 : {route.params.employee}</Text>
           <ButtonContainer>
             <CustomButton
               title="완료"
@@ -135,30 +143,10 @@ const MainContainer = styled.View`
     background-color : #ffffff
 `;
 
-const TitleContainer = styled.View`
-    flex-direction: row;
-    align-items: center;
-    margin : 20px;
-    
-`;
-
 const Space = styled.View`
     margin-vertical: 6px;
 `
 
-
-const Title = styled.Text`
-    flex:1;
-    font-size: 30px;
-    textAlign: center;
-    font-weight: bold;
-`
-
-const Separator = styled.View`
-    borderBottomWidth: 2px;
-    borderBottomColor: black;
-    margin-bottom:5px;
-`;
 
 const ButtonContainer = styled.View`
   justify-content:center;
@@ -166,26 +154,19 @@ const ButtonContainer = styled.View`
 `;
 
 
-const CommonText2 = styled.Text`
-    font-size: 15px;
-    text-align:left;
-`;
-
-const BoldText = styled.Text`
-    font-size: 18px;
-    text-align:left;
-    font-weight: bold;
-`;
-
 const SmallText = styled.Text`
-    font-size : 14px;
+    font-size : 16px;
     text-align:left;
 `;
-
-
 
 const CheckBoxContainer = styled.View`
     flex-direction: row;
     align-items: center;
 
+`;
+
+const BigBoldText = styled.Text`
+    font-size: 20px;
+    text-align:left;
+    font-weight: bold;
 `;

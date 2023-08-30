@@ -142,7 +142,7 @@ const AgreementScreen: React.FC<AgreementScreenProps> = ({ navigation }) => {
 
     return (
         <MainContainer>
-            <CustomHeader title="표준근로계약서" navigation = {navigation} />
+            <CustomHeader title="표준근로계약서" navigation = {navigation} menu={false}/>
             <KeyboardAwareScrollView
                style={{flex:1,paddingHorizontal:20, backgroundColor:"#ffffff"}}
                 contentContainerStyle={{ flexGrow: 1 }}
@@ -150,6 +150,9 @@ const AgreementScreen: React.FC<AgreementScreenProps> = ({ navigation }) => {
                 scrollEnabled={true}
             >
                 <View>
+                    <Space />
+                    <Space />
+                    
                     <Row>
                         <CommonInput
                             onChangeText={setEmployer}
@@ -172,16 +175,16 @@ const AgreementScreen: React.FC<AgreementScreenProps> = ({ navigation }) => {
                         </CommonText>
                     </Row>
                     <Space />
-                    <BoldText>1. 근로계약기간:</BoldText>
+                    <BigBoldText>1. 근로계약기간:</BigBoldText>
                     <Row>
-                        <FourNumInput
+                        <NumInput
                             onChangeText={setStartYear}
                             value={start_year}
                             keyboardType="number-pad"
                             placeholder="1999"
                         />
                         <CommonText>년 </CommonText>
-                        <TwoNumInput
+                        <NumInput
                             onChangeText={setStartMonth}
                             value={start_month}
                             keyboardType="number-pad"
@@ -189,7 +192,7 @@ const AgreementScreen: React.FC<AgreementScreenProps> = ({ navigation }) => {
 
                         />
                         <CommonText>월 </CommonText>
-                        <TwoNumInput
+                        <NumInput
                             onChangeText={setStartDay}
                             value={start_day}
                             keyboardType="number-pad"
@@ -198,14 +201,14 @@ const AgreementScreen: React.FC<AgreementScreenProps> = ({ navigation }) => {
                         <CommonText>일 부터</CommonText>
                     </Row>
                     <Row>
-                        <FourNumInput
+                        <NumInput
                             onChangeText={setEndYear}
                             value={end_year}
                             keyboardType="number-pad"
                             placeholder="1999"
                         />
                         <CommonText>년 </CommonText>
-                        <TwoNumInput
+                        <NumInput
                             onChangeText={setEndMonth}
                             value={end_month}
 
@@ -213,7 +216,7 @@ const AgreementScreen: React.FC<AgreementScreenProps> = ({ navigation }) => {
                             placeholder="12"
                         />
                         <CommonText>월 </CommonText>
-                        <TwoNumInput
+                        <NumInput
                             onChangeText={setEndDay}
                             value={end_day}
                             keyboardType="number-pad"
@@ -224,9 +227,10 @@ const AgreementScreen: React.FC<AgreementScreenProps> = ({ navigation }) => {
                     <SmallText>
                         ※ 근로계약기간을 정하지 않는 경우에는 '근로개시일'만 기재
                     </SmallText>
+                    <Space />
                     <Row>
                         <Space />
-                        <BoldText>2. 근무장소 :  </BoldText>
+                        <BigBoldText>2. 근무장소 :  </BigBoldText>
                         <WideInput
                             onChangeText={setLocation}
                             value={location}
@@ -235,7 +239,7 @@ const AgreementScreen: React.FC<AgreementScreenProps> = ({ navigation }) => {
                     </Row>
                     <Row>
                         <Space />
-                        <BoldText>3. 업무내용 :  </BoldText>
+                        <BigBoldText>3. 업무내용 :  </BigBoldText>
                         <WideInput
                             onChangeText={setJob}
                             value={job}
@@ -243,9 +247,10 @@ const AgreementScreen: React.FC<AgreementScreenProps> = ({ navigation }) => {
                         />
                     </Row>
                     <Space />
-                    <BoldText>4. 소정근로시간 :</BoldText>
+                    <Space />
+                    <BigBoldText>4. 소정근로시간 :</BigBoldText>
                     <Row>
-                        <TwoNumInput
+                        <NumInput
 
                             onChangeText={setStartHour}
                             value={startHour}
@@ -254,7 +259,7 @@ const AgreementScreen: React.FC<AgreementScreenProps> = ({ navigation }) => {
                             placeholder='00'
                         />
                         <CommonText>시 </CommonText>
-                        <TwoNumInput
+                        <NumInput
 
                             onChangeText={setStartMinute}
                             value={startMinute}
@@ -263,7 +268,7 @@ const AgreementScreen: React.FC<AgreementScreenProps> = ({ navigation }) => {
                             placeholder='00'
                         />
                         <CommonText>분부터  </CommonText>
-                        <TwoNumInput
+                        <NumInput
 
                             onChangeText={setEndHour}
                             value={endHour}
@@ -272,7 +277,7 @@ const AgreementScreen: React.FC<AgreementScreenProps> = ({ navigation }) => {
                             placeholder='23'
                         />
                         <CommonText>시 </CommonText>
-                        <TwoNumInput
+                        <NumInput
 
                             onChangeText={setEndMinute}
                             value={endMinute}
@@ -339,33 +344,13 @@ export default AgreementScreen;
 
 const MainContainer = styled.View`
     flex: 1;
-    background-color: '#FFFFFF';
+    background-color:#ffffff;
 `;
 
-const TitleContainer = styled.View`
-    flex-direction: row;
-    align-items: center;
-    margin : 20px;
-    
-`;
 
 const Space = styled.View`
     margin-vertical: 6px;
 `
-
-
-const Title = styled.Text`
-    flex:1;
-    font-size: 30px;
-    textAlign: center;
-    font-weight: bold;
-`
-
-const Separator = styled.View`
-    borderBottomWidth: 2px;
-    borderBottomColor: black;
-    margin-bottom:5px;
-`;
 
 const ButtonContainer = styled.View`
   justify-content:center;
@@ -377,7 +362,6 @@ const Row = styled.View`
     align-items: center;
     margin-vertical: 6px;
     flex : 1;
-
 `;
 
 const CommonText = styled.Text`
@@ -385,14 +369,8 @@ const CommonText = styled.Text`
     text-align:left;
 `;
 
-const BoldText = styled.Text`
-    font-size: 18px;
-    text-align:left;
-    font-weight: bold;
-`;
-
 const SmallText = styled.Text`
-    font-size : 14px;
+    font-size : 16px;
     text-align:left;
 `;
 
@@ -408,17 +386,7 @@ const CommonInput = styled.TextInput`
     min-width: 80px;
 `;
 
-const FourNumInput = styled.TextInput`
-    border-bottom-width: 1px;
-    border-bottom-color: black;
-    font-size: 18px;
-    margin-right: 5px;
-    text-align: center;
-    padding-bottom: 3px;
-    padding-top : 3px;
-`;
-
-const TwoNumInput = styled.TextInput`
+const NumInput = styled.TextInput`
     border-bottom-width: 1px;
     border-bottom-color: black;
     font-size: 18px;
@@ -431,7 +399,7 @@ const TwoNumInput = styled.TextInput`
 const SmallInput = styled.TextInput`
     border-bottom-width: 1px;
     border-bottom-color: black;
-    font-size: 14px;
+    font-size: 16px;
     margin-right: 5px;
     text-align: center;
     padding-bottom: 0px;
@@ -449,4 +417,10 @@ const WideInput = styled.TextInput`
     padding-bottom: 3px;
     padding-top : 3px;
     min-width: 200px;
+`;
+
+const BigBoldText = styled.Text`
+    font-size: 20px;
+    text-align:left;
+    font-weight: bold;
 `;
